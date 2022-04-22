@@ -1,51 +1,47 @@
-import React,{useEffect,useState}from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Apitest = () => {
-    const [state, dispatch] =useState()
-    const [Data,setData]=useState("")
-    useEffect(() => {
-        if (state) {
-            setData(state)
-        }
-    }, [state])
-  axios
-    .get("https://reqres.in/api/users?page=2")
-    .then((res) => {
-      console.log(res.data, "Get");
-    })
-    .catch((error) => {
-      console.log(error, "error");
-    });
-    console.log(state,"state")
+  const [Data, setData] = useState([])
+  useEffect(() => {
+    (
+      async () => {
+        await axios
+          .get("https://reqres.in/api/users?page=2")
+          .then((res) => {
+            setData(res.data.data)
+          })
+          .catch((error) => {
+          });
+      }
+    )()
+  }, [])
+  console.log(Data, "state22")
   return (
     <div>
-      <h1>Api testing</h1>
+    
       <table>
-        <thead>
+        <thead><h1>Api testing</h1>
           <tr>
             <th>Id.No</th>
-            <th>Photo</th>
-            <th>first_Name</th>
-            <th>Second_Name</th>
+            <th>FirstName</th>
+            <th>SecondName</th>
             <th>Email</th>
           </tr>
         </thead>
         <tbody>
-          {state &&
-            state.map((res) => {
-              return (
-                <>
-                  <tr>
-                    <td>{res.id}</td>
-                    <td>{res.avatar}</td>
-                    <td>{res.first_name}</td>
-                    <td>{res.last_name}</td>
-                    <td>{res.email}</td>
-                  </tr>
-                </>
-              );
-            })}
+          {Data && Data.map((res, index) => {
+            return (
+              <>
+                <tr>
+                  <td>{res.id}</td>
+                  <td>{res.first_name}</td>
+                  <td>{res.last_name}</td>
+                  <td>{res.email}</td>
+                </tr>
+              </>
+            );
+          })}
         </tbody>
       </table>
     </div>
