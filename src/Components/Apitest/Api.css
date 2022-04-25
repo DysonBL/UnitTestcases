@@ -1,0 +1,13 @@
+.data{
+    text-align: center;
+    background: rgb(220, 173, 173);
+}
+h2{
+    color: rgb(11, 67, 68);
+}
+.reg{
+    background-color: rgb(194, 241, 147);
+}
+.log{
+    background-color: rgb(177, 200, 244);
+}

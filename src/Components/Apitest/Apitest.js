@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import "./Api.css";
 const Apitest = () => {
   const [Data, setData] = useState([])
   useEffect(() => {
@@ -16,12 +16,11 @@ const Apitest = () => {
       }
     )()
   }, [])
-  console.log(Data, "state22")
   return (
-    <div>
+    <div className="data">
     
       <table>
-        <thead><h1>Api testing</h1>
+        <thead><h2>Api testing</h2>
           <tr>
             <th>Id.No</th>
             <th>FirstName</th>
